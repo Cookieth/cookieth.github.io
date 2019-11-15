@@ -1,0 +1,19 @@
+//import anime from '../node_modules/animejs/lib/anime.es.js';
+//const anime = require('animejs');
+
+let animation = anime({
+    targets: 'div',
+    translateX: 100,
+    borderRadius: 50,
+    duration: 2000,
+    easing: 'linear',
+    direction: 'alternate'
+  });    
+
+/*anime({
+    targets: 'div',
+    translateX: 250,
+    rotate: '1turn',
+    backgroundColor: '#FFF',
+    duration: 800
+});*/

@@ -5,9 +5,9 @@ let animation = anime({
     duration: 2000,
     easing: 'linear',
     direction: 'alternate'
-  });    
-
-/*anime({
+  });
+/*
+anime({
     targets: 'div',
     translateX: 250,
     rotate: '1turn',

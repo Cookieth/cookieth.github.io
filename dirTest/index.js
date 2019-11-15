@@ -1,6 +1,3 @@
-//import anime from '../node_modules/animejs/lib/anime.es.js';
-//const anime = require('animejs');
-
 let animation = anime({
     targets: 'div',
     translateX: 100,

@@ -11,5 +11,8 @@ p   {
 div {
     width: 100px;
     height: 100px;
-    background-color:#ef4fdf;
+    background-color:tomato;
+}
+.divTest{
+    background-color:wheat;
 }

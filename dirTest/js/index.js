@@ -1,16 +1,17 @@
-let animation = anime({
+/*let animation = anime({
     targets: 'div',
     translateX: 100,
     borderRadius: 50,
     duration: 2000,
     easing: 'linear',
     direction: 'alternate'
-  });
-/*
+  });*/
+
 anime({
-    targets: 'div',
-    translateX: 250,
+    targets: '.divTest',
+    translateX: 500,
+    translateY: 250,
     rotate: '1turn',
-    backgroundColor: '#FFF',
-    duration: 800
-});*/
+    loop: true,
+    duration: 2000
+});

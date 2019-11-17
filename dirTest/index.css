@@ -14,5 +14,7 @@ div {
     background-color:tomato;
 }
 .divTest{
+    width: 25px;
+    height: 25px;
     background-color:wheat;
 }

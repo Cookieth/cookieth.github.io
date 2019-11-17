@@ -13,5 +13,5 @@ anime({
     translateY: 250,
     rotate: '1turn',
     loop: true,
-    duration: 2000
+    duration: 10000
 });

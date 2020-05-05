@@ -1,36 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Keith Choa]]></title><description><![CDATA[This is my blog!]]></description><link>https://cookieth.github.io/cookieth-blog</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 05 May 2020 15:29:25 GMT</lastBuildDate><item><title><![CDATA[Journeying into Dynamic Webpages]]></title><link>https://cookieth.github.io/cookieth-blog/new-beginnings/</link><guid isPermaLink="false">https://cookieth.github.io/cookieth-blog/new-beginnings/</guid><pubDate>Tue, 05 May 2020 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Hello, World!]]></title><description><![CDATA[Every blog post, I’m thinking of featuring one of the many film photos I took during my time in the Philippines, so here’s one for you now:]]></description><link>https://cookieth.github.io/cookieth-blog/hello-world/</link><guid isPermaLink="false">https://cookieth.github.io/cookieth-blog/hello-world/</guid><pubDate>Thu, 30 Apr 2020 10:48:00 GMT</pubDate><content:encoded>&lt;p&gt;Every blog post, I’m thinking of featuring one of the many film photos I took during my time in the Philippines, so here’s one for you now:&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/eea057106a41c93a0cf407a10e5ede43/f0881/000011.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.89189189189189%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIDAQT/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAapJ8sOUj//EABoQAAIDAQEAAAAAAAAAAAAAAAABAgMUESL/2gAIAQEAAQUC1yNNjNFw14dfIH//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAwEBPwGH/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8Bqv/EAB0QAAIABwEAAAAAAAAAAAAAAAABEBESMTJBYZH/2gAIAQEABj8CxRrwujrKpw//xAAZEAEBAQEBAQAAAAAAAAAAAAABEQAhMfH/2gAIAQEAAT8hchZ0Z83AV6Fuln0WTNXjN//aAAwDAQACAAMAAAAQN/8A/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oACAEDAQE/EKTH/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8Qaf/EAB0QAQACAgIDAAAAAAAAAAAAAAEAESExQXFRYcH/2gAIAQEAAT8Qq2BdJhfsWGvZudSwMb1j5mQaVXEzgor2VCnA8Vc//9k=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Observing Silence seems to be all we&amp;#39;re doing lately&quot;
-        title=&quot;Observing Silence seems to be all we&amp;#39;re doing lately&quot;
-        src=&quot;/static/eea057106a41c93a0cf407a10e5ede43/1c72d/000011.jpg&quot;
-        srcset=&quot;/static/eea057106a41c93a0cf407a10e5ede43/a80bd/000011.jpg 148w,
-/static/eea057106a41c93a0cf407a10e5ede43/1c91a/000011.jpg 295w,
-/static/eea057106a41c93a0cf407a10e5ede43/1c72d/000011.jpg 590w,
-/static/eea057106a41c93a0cf407a10e5ede43/a8a14/000011.jpg 885w,
-/static/eea057106a41c93a0cf407a10e5ede43/fbd2c/000011.jpg 1180w,
-/static/eea057106a41c93a0cf407a10e5ede43/f0881/000011.jpg 3637w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning What Ties This All Together!]]></title><description><![CDATA[The Story Recently, I set myself the goal of learning more about Web Development. So, I thought, what better way than to create my own blog…]]></description><link>https://cookieth.github.io/cookieth-blog/learning-what-ties-this-all-together/</link><guid isPermaLink="false">https://cookieth.github.io/cookieth-blog/learning-what-ties-this-all-together/</guid><pubDate>Thu, 30 Apr 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;The Story&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Keith Choa]]></title><description><![CDATA[This is my blog!]]></description><link>https://cookieth.github.io/cookieth-blog</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 05 May 2020 15:43:02 GMT</lastBuildDate><item><title><![CDATA[Journeying into Dynamic Webpages]]></title><link>https://cookieth.github.io/cookieth-blog/new-beginnings/</link><guid isPermaLink="false">https://cookieth.github.io/cookieth-blog/new-beginnings/</guid><pubDate>Tue, 05 May 2020 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Learning What Ties This All Together!]]></title><description><![CDATA[The Story Recently, I set myself the goal of learning more about Web Development. So, I thought, what better way than to create my own blog…]]></description><link>https://cookieth.github.io/cookieth-blog/learning-what-ties-this-all-together/</link><guid isPermaLink="false">https://cookieth.github.io/cookieth-blog/learning-what-ties-this-all-together/</guid><pubDate>Thu, 30 Apr 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;The Story&lt;/h1&gt;
 &lt;p&gt;Recently, I set myself the goal of learning more about Web Development. So, I thought, what better way than to create my own blog? I started by brushing off my rusty JavaScript skills (the last time I wrote anything in JavaScript was probably 2015), sat myself in a crash course on React.js, and in another course on gatsby.js, and I got to work.&lt;/p&gt;
 &lt;p&gt;I watched &lt;a href=&quot;https://www.youtube.com/watch?v=Ke90Tje7VS0&quot;&gt;this&lt;/a&gt; wonderful course on React.js by a channel named &lt;strong&gt;Programming with Mosh&lt;/strong&gt;. I thoroughly enjoyed it, and I learnt a LOT about React’s component-based system. Then, armed with that knowledge, I followed gatsby.js’ &lt;a href=&quot;https://www.gatsbyjs.org/docs/&quot;&gt;wonderful documentation&lt;/a&gt;, as well as some &lt;a href=&quot;https://www.youtube.com/watch?v=6YhqQ2ZW1sc&quot;&gt;video tutorials&lt;/a&gt;. However, I find the best way to learn is always in practice. So, I set out looking for a template to get my hands dirty.&lt;/p&gt;
 &lt;p&gt;While doing research, I found &lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot;&gt;this&lt;/a&gt; template, which was developed by Alexander Shelepenok. I knew about this, as I have recently been reading &lt;a href=&quot;https://victorzhou.com/&quot;&gt;Victor Zhou’s Website&lt;/a&gt;, and found out that he helped design the template, and his website itself is a prime example of it. However, this particular template was far too complicated for my needs. It had several features that I felt like I didn’t really need with this blog (yet). These were things such as CMS compatibility, a docker deployment system, flow, jest (for testing, though I’ll eventually need that), and more.&lt;/p&gt;
@@ -166,6 +134,38 @@ Keith Choa&lt;/p&gt;
 /static/e962d218d8ea207e422354ec68041c30/a8a14/000016.jpg 885w,
 /static/e962d218d8ea207e422354ec68041c30/fbd2c/000016.jpg 1180w,
 /static/e962d218d8ea207e422354ec68041c30/f0881/000016.jpg 3637w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hello, World!]]></title><description><![CDATA[Every blog post, I’m thinking of featuring one of the many film photos I took during my time in the Philippines, so here’s one for you now:]]></description><link>https://cookieth.github.io/cookieth-blog/hello-world/</link><guid isPermaLink="false">https://cookieth.github.io/cookieth-blog/hello-world/</guid><pubDate>Wed, 29 Apr 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Every blog post, I’m thinking of featuring one of the many film photos I took during my time in the Philippines, so here’s one for you now:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/eea057106a41c93a0cf407a10e5ede43/f0881/000011.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.89189189189189%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIDAQT/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAapJ8sOUj//EABoQAAIDAQEAAAAAAAAAAAAAAAABAgMUESL/2gAIAQEAAQUC1yNNjNFw14dfIH//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAwEBPwGH/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8Bqv/EAB0QAAIABwEAAAAAAAAAAAAAAAABEBESMTJBYZH/2gAIAQEABj8CxRrwujrKpw//xAAZEAEBAQEBAQAAAAAAAAAAAAABEQAhMfH/2gAIAQEAAT8hchZ0Z83AV6Fuln0WTNXjN//aAAwDAQACAAMAAAAQN/8A/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oACAEDAQE/EKTH/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8Qaf/EAB0QAQACAgIDAAAAAAAAAAAAAAEAESExQXFRYcH/2gAIAQEAAT8Qq2BdJhfsWGvZudSwMb1j5mQaVXEzgor2VCnA8Vc//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Observing Silence seems to be all we&amp;#39;re doing lately&quot;
+        title=&quot;Observing Silence seems to be all we&amp;#39;re doing lately&quot;
+        src=&quot;/static/eea057106a41c93a0cf407a10e5ede43/1c72d/000011.jpg&quot;
+        srcset=&quot;/static/eea057106a41c93a0cf407a10e5ede43/a80bd/000011.jpg 148w,
+/static/eea057106a41c93a0cf407a10e5ede43/1c91a/000011.jpg 295w,
+/static/eea057106a41c93a0cf407a10e5ede43/1c72d/000011.jpg 590w,
+/static/eea057106a41c93a0cf407a10e5ede43/a8a14/000011.jpg 885w,
+/static/eea057106a41c93a0cf407a10e5ede43/fbd2c/000011.jpg 1180w,
+/static/eea057106a41c93a0cf407a10e5ede43/f0881/000011.jpg 3637w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;

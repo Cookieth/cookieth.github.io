@@ -1,6 +1,6 @@
 ---
 title: Hello, World!
-date: "2020-04-30T10:48:00.000Z"
+date: "2020-04-29"
 description: "First post!"
 ---
 

@@ -3,7 +3,7 @@ module.exports = {
     title: `Keith Choa`,
     author: {
       name: `Keith Choa`,
-      summary: `who loves solving problems.`,
+      summary: `, an embedded systems enthusiast, and a Computer Engineering student at the University of Waterloo.`,
     },
     description: `This is my blog!`,
     siteUrl: `https://cookieth.github.io/cookieth-blog/`,
@@ -62,13 +62,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Keith Choa's Website`,
+        short_name: `cookieth`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/profile-pic.jpg`,
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -80,6 +80,7 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-sass`,
   ],
 }

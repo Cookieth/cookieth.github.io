@@ -58,12 +58,15 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author.name}</strong> {author.summary}
+        Written by{" "}
+        <a href={"https://www.linkedin.com/in/keithchoa/"}>
+          <strong>{author.name}</strong>
+        </a>{" "}
+        {author.summary}
         {` `}
-        <a href={`https://linkedin.com/in/${social.linkedin}`}>
-          Check out his linkedin
+        <a href={`https://github.com/${social.github}`}>
+          Check out his github!
         </a>
-        <a href={`https://github.com/${social.github}`}>and his github!</a>
       </p>
     </div>
   )

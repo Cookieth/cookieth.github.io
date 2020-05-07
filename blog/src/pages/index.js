@@ -1,71 +1,54 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import "../styles/index.scss"
 
-const BlogIndex = ({ data, location }) => {
+const LandingPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
-    </Layout>
+    <div>
+      <h1 className="mainTitle">{siteTitle}</h1>
+      <section className="buttons">
+        <div className="buttonContainer">
+          <Link to="./blog" className="btn btn-1" style={{ boxShadow: "none" }}>
+            <svg>
+              <rect x="0" y="0" fill="none" width="100%" height="100%" />
+            </svg>
+            <div className="buttonText">Blog</div>
+          </Link>
+          <Link
+            to="./projects"
+            className="btn btn-1"
+            style={{ boxShadow: "none" }}
+          >
+            <svg>
+              <rect x="0" y="0" fill="none" width="100%" height="100%" />
+            </svg>
+            <div className="buttonText">Projects</div>
+          </Link>
+          <Link
+            to="./about"
+            className="btn btn-1"
+            style={{ boxShadow: "none" }}
+          >
+            <svg>
+              <rect x="0" y="0" fill="none" width="100%" height="100%" />
+            </svg>
+            <div className="buttonText">About Me</div>
+          </Link>
+        </div>
+      </section>
+    </div>
   )
 }
 
-export default BlogIndex
+export default LandingPage
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
         title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
       }
     }
   }

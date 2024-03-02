@@ -65,60 +65,41 @@
     var topicsKey = "bingoTopics";
     var stateKeyPrefix = "cell_";
 
-    // Function to generate the bingo card
-    function generateCard() {
-      var card = document.getElementById("bingo-card");
-      card.innerHTML = '';
-
-      var questions = generateRandomQuestions();
-      localStorage.setItem(topicsKey, JSON.stringify(questions));
-
-      clearCompletedState();
-
-      for (var i = 0; i < 5; i++) {
-        var row = card.insertRow();
-
-        for (var j = 0; j < 5; j++) {
-          var cell = row.insertCell();
-          if (i === 2 && j === 2) {
-            cell.textContent = "FREE SPACE";
-            cell.style.fontWeight = "bold";
-          } else {
-            cell.textContent = questions[i * 5 + j];
-            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
-            if (cellState === "completed") {
-              cell.classList.add("completed");
-            }
-            cell.onclick = function() {
-              this.classList.toggle("completed");
-              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
-              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
-            };
-          }
-        }
+    // Generate the bingo card on first load
+    window.onload = function() {
+      if (!localStorage.getItem(topicsKey)) {
+        generateCard();
+      } else {
+        generateSavedCard();
       }
-    }
+    };
 
     // Function to generate random questions
     function generateRandomQuestions() {
-      var allQuestions = [
-        "Question 1", "Question 2", "Question 3", "Question 4", "Question 5",
-        "Question 6", "Question 7", "Question 8", "Question 9", "Question 10",
-        "Question 11", "Question 12", "Question 13", "Question 14", "Question 15",
-        "Question 16", "Question 17", "Question 18", "Question 19", "Question 20",
-        "Question 21", "Question 22", "Question 23", "Question 24", "Question 25"
-      ];
-
-      allQuestions.sort(() => Math.random() - 0.5);
-      return allQuestions.slice(0, 25);
+      var questions = [];
+      var questionNumber = 1;
+      while (questions.length < 25) {
+        var question = "Question " + questionNumber;
+        var choices = ["A", "B", "C", "D", "No option"]; // Include "No option" in choices
+        questions.push({ question: question, choices: choices });
+        questionNumber++;
+      }
+      questions.sort(() => Math.random() - 0.5); // Shuffle the questions array
+      return questions.slice(0, 25); // Return the first 25 shuffled questions
     }
 
     // Function to clear the completed state from all cells
     function clearCompletedState() {
       var cells = document.querySelectorAll("td");
       cells.forEach(function(cell) {
-        cell.classList.remove("completed");
-        localStorage.removeItem(stateKeyPrefix + cell.parentNode.rowIndex + "_" + cell.cellIndex);
+        cell.querySelectorAll("input[type=radio]").forEach(function(input) {
+          input.checked = false;
+        });
+        for (var i = 0; i < 5; i++) {
+          for (var j = 0; j < 5; j++) {
+            localStorage.removeItem(stateKeyPrefix + "answer_" + i + "_" + j);
+          }
+        }
       });
     }
 
@@ -131,12 +112,13 @@
       }
     };
 
-    // Function to generate the bingo card from saved state
-    function generateSavedCard() {
+    function generateCard() {
+      clearCompletedState(); // Reset state
       var card = document.getElementById("bingo-card");
       card.innerHTML = '';
 
-      var questions = JSON.parse(localStorage.getItem(topicsKey));
+      var questions = generateRandomQuestions();
+      localStorage.setItem(topicsKey, JSON.stringify(questions));
 
       for (var i = 0; i < 5; i++) {
         var row = card.insertRow();
@@ -147,20 +129,116 @@
             cell.textContent = "FREE SPACE";
             cell.style.fontWeight = "bold";
           } else {
-            cell.textContent = questions[i * 5 + j];
-            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
-            if (cellState === "completed") {
-              cell.classList.add("completed");
-            }
-            cell.onclick = function() {
-              this.classList.toggle("completed");
-              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
-              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
-            };
+            var question = questions[i * 5 + j].question;
+            var choices = questions[i * 5 + j].choices;
+            cell.innerHTML = question + "<br>";
+            choices.forEach(function(choice, index) {
+              var label = document.createElement("label");
+              var input = document.createElement("input");
+              input.type = "radio";
+              input.name = "question_" + (i * 5 + j); // Use question index as the name
+              input.value = String.fromCharCode(65 + index);
+              if (localStorage.getItem(stateKeyPrefix + "answer_" + (i * 5 + j)) === null) {
+                input.checked = choice === "No option"; // Check "No option" if no state is saved
+              } else if (localStorage.getItem(stateKeyPrefix + "answer_" + (i * 5 + j)) === input.value) {
+                input.checked = true;
+              }
+              input.onclick = (function(index) {
+                return function() {
+                  localStorage.setItem(stateKeyPrefix + "answer_" + index, input.value); // Use question index as the key
+                };
+              })(i * 5 + j); // Use closure to capture correct question index
+              label.appendChild(input);
+              label.appendChild(document.createTextNode(" " + choice));
+              label.appendChild(document.createElement("br")); // New line for each choice
+              cell.appendChild(label);
+            });
           }
         }
+      }
+    }
+
+    function generateSavedCard() {
+      var card = document.getElementById("bingo-card");
+      card.innerHTML = '';
+
+      var topics = localStorage.getItem(topicsKey);
+      if (topics) {
+        try {
+          var questions = JSON.parse(topics);
+
+          for (var i = 0; i < 5; i++) {
+            var row = card.insertRow();
+
+            for (var j = 0; j < 5; j++) {
+              var cell = row.insertCell();
+              if (i === 2 && j === 2) {
+                cell.textContent = "FREE SPACE";
+                cell.style.fontWeight = "bold";
+              } else {
+                var question = questions[i * 5 + j].question;
+                var choices = questions[i * 5 + j].choices;
+                var questionIndex = i * 5 + j; // Index of the question in the questions array
+                cell.innerHTML = question + "<br>";
+                choices.forEach(function(choice, index) {
+                  var label = document.createElement("label");
+                  var input = document.createElement("input");
+                  input.type = "radio";
+                  input.name = "question_" + questionIndex; // Use question index as the name
+                  input.value = String.fromCharCode(65 + index);
+                  if (localStorage.getItem(stateKeyPrefix + "answer_" + questionIndex) === null) {
+                    input.checked = choice === "No option"; // Check "No option" if no state is saved
+                  } else if (localStorage.getItem(stateKeyPrefix + "answer_" + questionIndex) === input.value) {
+                    input.checked = true;
+                  }
+                  input.onclick = (function(index) {
+                    return function() {
+                      localStorage.setItem(stateKeyPrefix + "answer_" + index, input.value); // Use question index as the key
+                    };
+                  })(questionIndex); // Use closure to capture correct questionIndex
+                  label.appendChild(input);
+                  label.appendChild(document.createTextNode(" " + choice));
+                  label.appendChild(document.createElement("br")); // New line for each choice
+                  cell.appendChild(label);
+                });
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Error parsing saved questions:", error);
+          generateCard(); // Fallback to generating a new card
+        }
+      } else {
+        generateCard(); // Fallback to generating a new card
       }
     }
   </script>
 </body>
 </html>
+
+        <!-- { question: "Question 1", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 2", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 3", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 4", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 5", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 6", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 7", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 8", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 9", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 10", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 11", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 12", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 13", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 14", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 15", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 16", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 17", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 18", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 19", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 20", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 21", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 22", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 23", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 24", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] },
+        { question: "Question 25", choices: ["Choice A", "Choice B", "Choice C", "Choice D"] }
+      ]; -->

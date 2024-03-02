@@ -40,6 +40,11 @@
     th, td {
       padding: 15px;
       text-align: center;
+      cursor: pointer;
+    }
+
+    th.completed, td.completed {
+      text-decoration: line-through;
     }
 
     button {
@@ -102,6 +107,9 @@
             cell.style.fontWeight = "bold";
           } else {
             cell.textContent = topics[i * 5 + j];
+            cell.onclick = function() {
+              this.classList.toggle("completed");
+            };
           }
         }
       }

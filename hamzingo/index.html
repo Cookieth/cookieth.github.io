@@ -79,13 +79,8 @@
       var card = document.getElementById("bingo-card");
       card.innerHTML = '';
 
-      var topics = localStorage.getItem(topicsKey);
-      if (!topics) {
-        topics = generateRandomTopics();
-        localStorage.setItem(topicsKey, JSON.stringify(topics));
-      } else {
-        topics = JSON.parse(topics);
-      }
+      var topics = generateRandomTopics();
+      localStorage.setItem(topicsKey, JSON.stringify(topics));
 
       for (var i = 0; i < 5; i++) {
         var row = card.insertRow();
@@ -109,7 +104,7 @@
       }
     }
 
-    // Function to generate random topics (if localStorage is empty)
+    // Function to generate random topics
     function generateRandomTopics() {
       var allTopics = [
         "Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5",

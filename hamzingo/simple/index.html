@@ -67,36 +67,36 @@
 
     // Function to generate the bingo card
     function generateCard() {
-      var card = document.getElementById("bingo-card");
-      card.innerHTML = '';
+        var card = document.getElementById("bingo-card");
+        card.innerHTML = '';
 
-      var questions = generateRandomQuestions();
-      localStorage.setItem(topicsKey, JSON.stringify(questions));
+        var questions = generateRandomQuestions();
+        localStorage.setItem(topicsKey, JSON.stringify(questions));
 
-      clearCompletedState();
+        clearCompletedState();
 
-      for (var i = 0; i < 5; i++) {
-        var row = card.insertRow();
+        for (var i = 0; i < 5; i++) {
+            var row = card.insertRow();
 
-        for (var j = 0; j < 5; j++) {
-          var cell = row.insertCell();
-          if (i === 2 && j === 2) {
-            cell.textContent = "FREE SPACE";
-            cell.style.fontWeight = "bold";
-          } else {
-            cell.textContent = questions[i * 5 + j];
-            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
-            if (cellState === "completed") {
-              cell.classList.add("completed");
+            for (var j = 0; j < 5; j++) {
+            var cell = row.insertCell();
+            if (i === 2 && j === 2) {
+                cell.textContent = "FREE SPACE";
+                cell.style.fontWeight = "bold";
+            } else {
+                cell.textContent = questions[i * 5 + j];
+                var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
+                if (cellState === "completed") {
+                cell.classList.add("completed");
+                }
+                cell.onclick = function() {
+                this.classList.toggle("completed");
+                var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
+                localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
+                };
             }
-            cell.onclick = function() {
-              this.classList.toggle("completed");
-              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
-              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
-            };
-          }
+            }
         }
-      }
     }
 
     // Function to generate random questions

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bingo Card</title>
+  <title>Hamzingo Card</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -10,27 +10,20 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
 
-    #container {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-    }
-
     h1 {
-      text-align: center;
       font-size: 24px;
       color: #3498db;
     }
 
     table {
       border-collapse: collapse;
-      margin: 0 auto;
+      margin: 20px 0;
     }
 
     table, th, td {
@@ -39,9 +32,8 @@
 
     th, td {
       padding: 15px;
-      text-align: center;
       cursor: pointer;
-      vertical-align: middle;
+      text-align: center;
     }
 
     th.completed, td.completed {
@@ -57,10 +49,6 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-      margin-top: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     button:hover {
@@ -69,7 +57,7 @@
   </style>
 </head>
 <body>
-  <h1>Bingo Card</h1>
+  <h1>Hamzingo Card</h1>
   <table id="bingo-card"></table>
   <button onclick="generateCard()">Generate New Card</button>
 
@@ -82,8 +70,8 @@
       var card = document.getElementById("bingo-card");
       card.innerHTML = '';
 
-      var topics = generateRandomTopics();
-      localStorage.setItem(topicsKey, JSON.stringify(topics));
+      var questions = generateRandomQuestions();
+      localStorage.setItem(topicsKey, JSON.stringify(questions));
 
       clearCompletedState();
 
@@ -96,7 +84,7 @@
             cell.textContent = "FREE SPACE";
             cell.style.fontWeight = "bold";
           } else {
-            cell.textContent = topics[i * 5 + j];
+            cell.textContent = questions[i * 5 + j];
             var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
             if (cellState === "completed") {
               cell.classList.add("completed");
@@ -111,21 +99,18 @@
       }
     }
 
-    // Function to generate random topics
-    function generateRandomTopics() {
-      var allTopics = [
-        "Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5",
-        "Topic 6", "Topic 7", "Topic 8", "Topic 9", "Topic 10",
-        "Topic 11", "Topic 12", "Topic 13", "Topic 14", "Topic 15",
-        "Topic 16", "Topic 17", "Topic 18", "Topic 19", "Topic 20",
-        "Topic 21", "Topic 22", "Topic 23", "Topic 24", "Topic 25",
-        "Topic 26", "Topic 27", "Topic 28", "Topic 29", "Topic 30",
-        "Topic 31", "Topic 32", "Topic 33", "Topic 34", "Topic 35",
-        "Topic 36", "Topic 37", "Topic 38", "Topic 39", "Topic 40"
+    // Function to generate random questions
+    function generateRandomQuestions() {
+      var allQuestions = [
+        "Question 1", "Question 2", "Question 3", "Question 4", "Question 5",
+        "Question 6", "Question 7", "Question 8", "Question 9", "Question 10",
+        "Question 11", "Question 12", "Question 13", "Question 14", "Question 15",
+        "Question 16", "Question 17", "Question 18", "Question 19", "Question 20",
+        "Question 21", "Question 22", "Question 23", "Question 24", "Question 25"
       ];
 
-      allTopics.sort(() => Math.random() - 0.5);
-      return allTopics.slice(0, 25);
+      allQuestions.sort(() => Math.random() - 0.5);
+      return allQuestions.slice(0, 25);
     }
 
     // Function to clear the completed state from all cells
@@ -151,7 +136,7 @@
       var card = document.getElementById("bingo-card");
       card.innerHTML = '';
 
-      var topics = JSON.parse(localStorage.getItem(topicsKey));
+      var questions = JSON.parse(localStorage.getItem(topicsKey));
 
       for (var i = 0; i < 5; i++) {
         var row = card.insertRow();
@@ -162,7 +147,7 @@
             cell.textContent = "FREE SPACE";
             cell.style.fontWeight = "bold";
           } else {
-            cell.textContent = topics[i * 5 + j];
+            cell.textContent = questions[i * 5 + j];
             var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
             if (cellState === "completed") {
               cell.classList.add("completed");

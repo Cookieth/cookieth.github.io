@@ -73,6 +73,7 @@
 
   <script>
     var topicsKey = "bingoTopics";
+    var stateKeyPrefix = "cell_";
 
     // Function to generate the bingo card
     function generateCard() {
@@ -92,12 +93,14 @@
             cell.style.fontWeight = "bold";
           } else {
             cell.textContent = topics[i * 5 + j];
-            if (localStorage.getItem("cell_" + i + "_" + j) === "completed") {
+            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
+            if (cellState === "completed") {
               cell.classList.add("completed");
             }
             cell.onclick = function() {
               this.classList.toggle("completed");
-              localStorage.setItem("cell_" + i + "_" + j, this.classList.contains("completed") ? "completed" : "");
+              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
+              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
             };
           }
         }
@@ -123,8 +126,43 @@
 
     // Generate the bingo card on first load
     window.onload = function() {
-      generateCard();
+      if (!localStorage.getItem(topicsKey)) {
+        generateCard();
+      } else {
+        generateSavedCard();
+      }
     };
+
+    // Function to generate the bingo card from saved state
+    function generateSavedCard() {
+      var card = document.getElementById("bingo-card");
+      card.innerHTML = '';
+
+      var topics = JSON.parse(localStorage.getItem(topicsKey));
+
+      for (var i = 0; i < 5; i++) {
+        var row = card.insertRow();
+
+        for (var j = 0; j < 5; j++) {
+          var cell = row.insertCell();
+          if (i === 2 && j === 2) {
+            cell.textContent = "FREE SPACE";
+            cell.style.fontWeight = "bold";
+          } else {
+            cell.textContent = topics[i * 5 + j];
+            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
+            if (cellState === "completed") {
+              cell.classList.add("completed");
+            }
+            cell.onclick = function() {
+              this.classList.toggle("completed");
+              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
+              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
+            };
+          }
+        }
+      }
+    }
   </script>
 </body>
 </html>

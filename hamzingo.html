@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bingo Card</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f5f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      color: #3498db;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    table, th, td {
+      border: 1px solid #3498db;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Bingo Card</h1>
+    <table id="bingo-card"></table>
+    <button onclick="generateCard()">Generate New Card</button>
+  </div>
+
+  <script>
+    // Array of all topics
+    var allTopics = [
+      "Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5",
+      "Topic 6", "Topic 7", "Topic 8", "Topic 9", "Topic 10",
+      "Topic 11", "Topic 12", "Topic 13", "Topic 14", "Topic 15",
+      "Topic 16", "Topic 17", "Topic 18", "Topic 19", "Topic 20",
+      "Topic 21", "Topic 22", "Topic 23", "Topic 24", "Topic 25",
+      "Topic 26", "Topic 27", "Topic 28", "Topic 29", "Topic 30",
+      "Topic 31", "Topic 32", "Topic 33", "Topic 34", "Topic 35",
+      "Topic 36", "Topic 37", "Topic 38", "Topic 39", "Topic 40"
+    ];
+
+    // Shuffle the allTopics array
+    allTopics.sort(() => Math.random() - 0.5);
+
+    // Subset of topics for the bingo card
+    var topics = allTopics.slice(0, 25);
+
+    // Function to generate the bingo card
+    function generateCard() {
+      var card = document.getElementById("bingo-card");
+      card.innerHTML = '';
+
+      for (var i = 0; i < 5; i++) {
+        var row = card.insertRow();
+
+        for (var j = 0; j < 5; j++) {
+          var cell = row.insertCell();
+          if (i === 2 && j === 2) {
+            cell.textContent = "FREE SPACE";
+            cell.style.fontWeight = "bold";
+          } else {
+            cell.textContent = topics[i * 5 + j];
+          }
+        }
+      }
+    }
+
+    // Generate the bingo card on first load
+    window.onload = function() {
+      generateCard();
+    };
+  </script>
+</body>
+</html>

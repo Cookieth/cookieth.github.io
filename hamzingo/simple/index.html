@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hamzingo Card</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f5f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #3498db;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #3498db;
+    }
+
+    th, td {
+      padding: 15px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    th.completed, td.completed {
+      text-decoration: line-through;
+      background-color: red;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hamzingo Card</h1>
+  <table id="bingo-card"></table>
+  <button onclick="generateCard()">Generate New Card</button>
+
+  <script>
+    var topicsKey = "bingoTopics";
+    var stateKeyPrefix = "cell_";
+
+    // Function to generate the bingo card
+    function generateCard() {
+      var card = document.getElementById("bingo-card");
+      card.innerHTML = '';
+
+      var questions = generateRandomQuestions();
+      localStorage.setItem(topicsKey, JSON.stringify(questions));
+
+      clearCompletedState();
+
+      for (var i = 0; i < 5; i++) {
+        var row = card.insertRow();
+
+        for (var j = 0; j < 5; j++) {
+          var cell = row.insertCell();
+          if (i === 2 && j === 2) {
+            cell.textContent = "FREE SPACE";
+            cell.style.fontWeight = "bold";
+          } else {
+            cell.textContent = questions[i * 5 + j];
+            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
+            if (cellState === "completed") {
+              cell.classList.add("completed");
+            }
+            cell.onclick = function() {
+              this.classList.toggle("completed");
+              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
+              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
+            };
+          }
+        }
+      }
+    }
+
+    // Function to generate random questions
+    function generateRandomQuestions() {
+      var allQuestions = [
+        "[1] Hamza does the lipsmacking thing", "[2] Hamza starts dancing]", "[3] Hamza quotes Drake", "[4] Hamza knows all the lyrics to a song", "[5] Hamza references John Green",
+        "[6] Hamza discusses the questionable ethics of the job he is returning to in New York", "[7] Hamza denies a drink because he doesn't want to get too wasted",
+        "[8] Hamza disappears", "[9] Hamza says \"noooooo\" disapprovingly even though he approves", "[10] Hamza says \"delectable\" when he eats something",
+        "[9] Hamza says \"schwasted\"", "[12] Hamza references Rahma", "[13] Hamza quotes DJ Khaled", "[14] Hamza starts freestyling", "[15] Hamza brings out a book",
+        "[16] Hamza plays a J. Cole song", "[17] Anything relating British Rap", "[18] Hamza writes something in his notebook", "[19] Hamza says something controvertial",
+        "[20] Hamza gets bullied", "[21] Hamza is bullying someone", "[22] Hamza starts pedantically debating about a topic", "[23] Hamza takes a bereal", "[24] Hamza puts on his essentials hoodie",
+        "[25] Hamza quotes Emily Dickinson"
+      ];
+
+      allQuestions.sort(() => Math.random() - 0.5);
+      return allQuestions.slice(0, 25);
+    }
+
+    // Function to clear the completed state from all cells
+    function clearCompletedState() {
+      var cells = document.querySelectorAll("td");
+      cells.forEach(function(cell) {
+        cell.classList.remove("completed");
+        localStorage.removeItem(stateKeyPrefix + cell.parentNode.rowIndex + "_" + cell.cellIndex);
+      });
+    }
+
+    // Generate the bingo card on first load
+    window.onload = function() {
+      if (!localStorage.getItem(topicsKey)) {
+        generateCard();
+      } else {
+        generateSavedCard();
+      }
+    };
+
+    // Function to generate the bingo card from saved state
+    function generateSavedCard() {
+      var card = document.getElementById("bingo-card");
+      card.innerHTML = '';
+
+      var questions = JSON.parse(localStorage.getItem(topicsKey));
+
+      for (var i = 0; i < 5; i++) {
+        var row = card.insertRow();
+
+        for (var j = 0; j < 5; j++) {
+          var cell = row.insertCell();
+          if (i === 2 && j === 2) {
+            cell.textContent = "FREE SPACE";
+            cell.style.fontWeight = "bold";
+          } else {
+            cell.textContent = questions[i * 5 + j];
+            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
+            if (cellState === "completed") {
+              cell.classList.add("completed");
+            }
+            cell.onclick = function() {
+              this.classList.toggle("completed");
+              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
+              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
+            };
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

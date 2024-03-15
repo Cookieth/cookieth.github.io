@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nononongo Card</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f5f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #3498db;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #3498db;
+    }
+
+    th, td {
+      padding: 15px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    th.completed, td.completed {
+      text-decoration: line-through;
+      background-color: red;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nononongo Card</h1>
+  <table id="bingo-card"></table>
+  <button onclick="generateCard()">Generate New Card</button>
+
+  <script>
+    var topicsKey = "bingoTopics";
+    var stateKeyPrefix = "cell_";
+
+    // Function to generate the bingo card
+    function generateCard() {
+        var card = document.getElementById("bingo-card");
+        card.innerHTML = '';
+
+        var questions = generateRandomQuestions();
+        localStorage.setItem(topicsKey, JSON.stringify(questions));
+
+        clearCompletedState();
+
+        for (var i = 0; i < 5; i++) {
+            var row = card.insertRow();
+
+            for (var j = 0; j < 5; j++) {
+            var cell = row.insertCell();
+            if (i === 2 && j === 2) {
+                cell.textContent = "FREE SPACE";
+                cell.style.fontWeight = "bold";
+            } else {
+                cell.textContent = questions[i * 5 + j];
+                var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
+                if (cellState === "completed") {
+                cell.classList.add("completed");
+                }
+                cell.onclick = function() {
+                this.classList.toggle("completed");
+                var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
+                localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
+                };
+            }
+            }
+        }
+    }
+
+    // Function to generate random questions
+    function generateRandomQuestions() {
+      var allQuestions = [
+      "Someone starts doing the team choreography at any point",
+      "Someone complains about how little sleep they got",
+      "Mention of schoolwork / homework",
+      "Mention of finding a job / co-op",
+      "Someone spills a drink",
+      "Someone takes a group selfie",
+      "Someone does an impressive trick or move spontaneously",
+      "Someone does a kpop cover dance (or a move)",
+      "Someone is spotted checking social media",
+      "Someone says “Go left, go right”",
+      "Mention of a professor or teacher (positively or negatively)",
+      "Someone is seen studying or doing homework during the party",
+      "Debate or discussion about different majors or fields of study",
+      "A campus plaza food place is being trashed by someone",
+      "Someone wearing university merchandise (like a hoodie or cap with the university logo)",
+      "Bereal",
+      "Bonding gets crashed by another group",
+      "PD refuses a punishment",
+      "A Drake song gets put on",
+      "Someone sings karaoke to kpop",
+      "Someone comes an hour late",
+      "Someone comes two hours late",
+      "Someone has to leave very early",
+      "Someone starts dancing randomly",
+      "Instagram story post"
+      ];
+
+      allQuestions.sort(() => Math.random() - 0.5);
+      return allQuestions.slice(0, 25);
+    }
+
+    // Function to clear the completed state from all cells
+    function clearCompletedState() {
+      var cells = document.querySelectorAll("td");
+      cells.forEach(function(cell) {
+        cell.classList.remove("completed");
+        localStorage.removeItem(stateKeyPrefix + cell.parentNode.rowIndex + "_" + cell.cellIndex);
+      });
+    }
+
+    // Generate the bingo card on first load
+    window.onload = function() {
+      if (!localStorage.getItem(topicsKey)) {
+        generateCard();
+      } else {
+        generateSavedCard();
+      }
+    };
+
+    // Function to generate the bingo card from saved state
+    function generateSavedCard() {
+      var card = document.getElementById("bingo-card");
+      card.innerHTML = '';
+
+      var questions = JSON.parse(localStorage.getItem(topicsKey));
+
+      for (var i = 0; i < 5; i++) {
+        var row = card.insertRow();
+
+        for (var j = 0; j < 5; j++) {
+          var cell = row.insertCell();
+          if (i === 2 && j === 2) {
+            cell.textContent = "FREE SPACE";
+            cell.style.fontWeight = "bold";
+          } else {
+            cell.textContent = questions[i * 5 + j];
+            var cellState = localStorage.getItem(stateKeyPrefix + i + "_" + j);
+            if (cellState === "completed") {
+              cell.classList.add("completed");
+            }
+            cell.onclick = function() {
+              this.classList.toggle("completed");
+              var key = stateKeyPrefix + this.parentNode.rowIndex + "_" + this.cellIndex;
+              localStorage.setItem(key, this.classList.contains("completed") ? "completed" : "");
+            };
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
